@@ -1,0 +1,64 @@
+
+services:
+    php-env:
+        depends_on:
+            mysql_db_all_surfaces:
+                condition: service_healthy
+        build:
+            context: .
+            # dockerfile: ./php/Dockerfile
+        ports:
+            - "9009:8000"
+        volumes:
+            - .:/var/www/html
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        networks:
+            - my_network
+
+
+
+
+    mysql_db_all_surfaces:
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - mysql_db_all_surfaces_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        healthcheck:
+            test: "mysql --user=root --password=root --execute=\"SELECT 1;\""
+            interval: 2s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
+        networks:
+            - my_network
+
+
+    phpmyadmin:
+        image: phpmyadmin:latest
+        depends_on:
+            mysql_db_all_surfaces:
+                condition: service_healthy
+        restart: always
+        ports:
+            - "9008:80"
+        environment:
+            PMA_HOST: mysql_db_all_surfaces # Ajout de cette ligne
+            PMA_USER: root          # Ajout de cette ligne pour le nom d'utilisateur
+            PMA_PASSWORD: root      # Code temporaire à changer
+            PMA_ARBITRARY: 1
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        networks:
+            - my_network
+
+volumes:
+    mysql_db_all_surfaces_data: {}
+
+networks:
+    my_network:
+        driver: bridge
