@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Validation du service {% endblock %}
+
+{% block body %}
+    <section>
+        <div>
+            <h1>Validation du service - {{ serviceInProgress.serviceIdentifier }}</h1>
+        </div>
+
+          <div>
+              <p>
+                  <strong>Nom du client : </strong> {{ serviceInProgress.fullName }}
+              </p>
+
+              <p>
+                  <strong>Email du client : </strong> {{ serviceInProgress.Email }}
+              </p>
+
+              <p>
+                  <strong>Phone : </strong>  {{ serviceInProgress.Phone }}
+              </p>
+
+              <p>
+                  <strong>Ville : </strong> {{ serviceInProgress.City }}
+              </p>
+
+              <p>
+                  <strong>Commune : </strong>
+                  <span>
+                      {% if serviceInProgress.municipality is not null %}
+                          {{ serviceInProgress.municipality }}
+                      {% else %}
+                          <em>NÉANT</em>
+                      {% endif %}
+                  </span>
+              </p>
+
+              <p>
+                  <strong>Type de service : </strong> {{ serviceInProgress.serviceType }}
+              </p>
+
+              <p>
+                  <strong>Besoin : </strong>
+                  <span>
+                      {% if serviceInProgress.need is not null %}
+                          {{ serviceInProgress.need }}
+                      {% else %}
+                          <em>NÉANT</em>
+                      {% endif %}
+                  </span>
+              </p>
+
+              <p>
+                  <strong>Date :</strong> Ajouté le {{ serviceInProgress.date|date('d / m / Y à h:m:s') }}
+              </p>
+          </div>
+    </section>
+
+    <section>
+        <h3>Entrez votre mot de passe pour valider la prestation</h3>
+
+        {{ form(passwordForm) }}
+    </section>
+{% endblock %}

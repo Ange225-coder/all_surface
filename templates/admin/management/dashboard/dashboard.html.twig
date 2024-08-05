@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}dashboard{% endblock %}
+
+{% block body %}
+    {# message if service has been added #}
+    {% if app.flashes('service_added_successfully') is defined %}
+        {% for service_added_message in app.flashes('service_added_successfully') %}
+            <p>
+                {{ service_added_message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+
+    {# message if service has been done #}
+    {% if app.flashes('remove_successfully') is defined %}
+        {% for service_done_message in app.flashes('remove_successfully') %}
+            <p>
+                {{ service_done_message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    <section>
+        <h1>Tableau de bord</h1>
+
+        <p>
+            <a href="{{ path('backstage_services_add') }}">Ajouter un service</a>
+        </p>
+
+        <p>
+            <a href="{{ path('backstage_services_list') }}">Tous mes services</a>
+        </p>
+
+        <p>
+            <a href="{{ path('backstage_services_in_progress') }}">
+                Prestations en cours
+
+                {% set service_counter = service_in_progress_counter|length %}
+                {% if service_counter %}
+                    <sup>
+                        {{ service_counter }}
+                    </sup>
+                {% endif %}
+            </a>
+        </p>
+
+        <p>
+            <a href="#">Prestations validées</a>
+        </p>
+
+        <p>
+            <a href="{{ path('backstage_logout') }}" style="color: red">Déconnexion</a>
+        </p>
+    </section>
+{% endblock %}

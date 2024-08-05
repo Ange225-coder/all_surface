@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Backstage - inscription</h1>
+
+        {# message if authentication is failed #}
+        {% if app.flashes('authentication_failed') is defined %}
+            {% for authentication_failed_message in app.flashes('authentication_failed') %}
+                <p>
+                    {{ authentication_failed_message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        {# message if an error occured during authentication #}
+        {% if app.flashes('authentication_error') is defined %}
+            {% for authentication_error_message in app.flashes('authentication_error') %}
+                <p>
+                    {{ authentication_error_message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        {{ form_start(registrationForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            <div>
+                {{ form_errors(registrationForm.admin_name) }}
+                {{ form_errors(registrationForm.password) }}
+
+                <div>
+
+                    {{ form_widget(registrationForm.admin_name) }}
+                </div>
+
+                <div>
+                    {{ form_widget(registrationForm.password) }}
+                </div>
+
+                <div>
+                    <button type="submit">S'enregistrer</button>
+                </div>
+            </div>
+        {{ form_end(registrationForm) }}
+    </section>
+{% endblock %}

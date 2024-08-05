@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}prestation en cours{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Prestation en cours ({{ services_in_progress|length }})</h1>
+
+        {% for service in services_in_progress %}
+            <p>
+                <a href="{{ path('backstage_service_identifier', {'id' : service.id}) }}">{{ service.serviceIdentifier }}</a>
+            </p>
+        {% endfor %}
+    </section>
+{% endblock %}

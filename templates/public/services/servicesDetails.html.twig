@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Surfaces - {{ service. serviceName }}{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/serviceSubscriptionForm.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Details de {{ service.serviceName }}</h1>
+
+        <p>
+            <img src="../{{ service.servicePic }}" alt="all_surface_{{ service.serviceName }}" width="200px">
+        </p>
+
+        <p>
+             Ici, on décrira quels sont les spécificités du service dans les moindres details
+        </p>
+
+        <p>
+            <a href="#" id="toggleFormLink">Souscrire au service</a>
+        </p>
+    </section>
+
+    <div style="" id="subscriptionForm">
+        {{ form_start(subscriptionForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            <div class="grille">
+                <div>
+                    {{ form_errors(subscriptionForm.full_name) }}
+                    {{ form_widget(subscriptionForm.full_name) }}
+                </div>
+
+                <div>
+                    {{ form_errors(subscriptionForm.email) }}
+                    {{ form_widget(subscriptionForm.email) }}
+                </div>
+
+                <div>
+                    {{ form_errors(subscriptionForm.phone) }}
+                    {{ form_widget(subscriptionForm.phone) }}
+                </div>
+
+                <div>
+                    {{ form_errors(subscriptionForm.city) }}
+                    {{ form_widget(subscriptionForm.city) }}
+                </div>
+
+                <div>
+                    {{ form_errors(subscriptionForm.municipality) }}
+                    {{ form_widget(subscriptionForm.municipality) }}
+                </div>
+
+                <div>
+                    {{ form_errors(subscriptionForm.need) }}
+                    {{ form_widget(subscriptionForm.need) }}
+                </div>
+
+                <div>
+                    <button type="submit">Souscrire</button>
+                </div>
+            </div>
+        {{ form_end(subscriptionForm) }}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        .grille {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    </style>
+{% endblock %}

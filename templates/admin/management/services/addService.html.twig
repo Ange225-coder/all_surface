@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un service{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Ajouter un service</h1>
+
+        {{ form_start(servicesForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            <div>
+                {{ form_errors(servicesForm.serviceName) }}
+                {{ form_widget(servicesForm.serviceName) }}
+            </div>
+
+            <div>
+                {{ form_errors(servicesForm.servicePic) }}
+                {{ form_widget(servicesForm.servicePic) }}
+            </div>
+
+            <div>
+                <button type="submit">Ajouter un service</button>
+            </div>
+        {{ form_end(servicesForm) }}
+    </section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Tous les services</h1>
+
+        {% for service in all_services %}
+
+                <p>
+                    <img src="../../{{ service.servicePic }}" alt="{{ service.serviceName }}" width="200px">
+                </p>
+
+                <p>
+                    {{ service.serviceName }}
+                </p>
+
+        {% endfor %}
+
+    </section>
+{% endblock %}
