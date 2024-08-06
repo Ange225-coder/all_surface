@@ -60,6 +60,13 @@
     <section>
         <h3>Entrez votre mot de passe pour valider la prestation</h3>
 
-        {{ form(passwordForm) }}
+        {{ form_start(passwordForm) }}
+            <div>
+                {{ form_errors(passwordForm.password) }}
+                {{ form_widget(passwordForm.password) }}
+            </div>
+
+            <button type="submit">Valider la prestation</button>
+        {{ form_end(passwordForm) }}
     </section>
 {% endblock %}

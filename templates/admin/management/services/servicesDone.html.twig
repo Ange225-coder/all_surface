@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestations validées{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Prestations validées</h1>
+
+        <table>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom client</th>
+                <th>Contact</th>
+                <th>Commune</th>
+                <th>Type du service</th>
+            </tr>
+
+            {% for service in servicesDone %}
+
+                <tr class="data">
+                    <td>{{ service.serviceIdentifier }}</td>
+                    <td>{{ service.fullName }}</td>
+                    <td>{{ service.phone }}</td>
+                    <td>
+                        {% if service.municipality is not null %}
+                            {{ service.municipality }}
+                            {% else %}
+                            <em>NÉANT</em>
+                        {% endif %}
+                    </td>
+                    <td>{{ service.serviceType }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .data {
+
+        }
+
+        td {
+            border: 1px solid;
+        }
+    </style>
+{% endblock %}
+

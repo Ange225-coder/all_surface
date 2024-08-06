@@ -3,19 +3,29 @@
 {% block title %}Services{% endblock %}
 
 {% block body %}
+    {% if app.flashes('service_deletion_success') is defined %}
+        {% for service_remove in app.flashes('service_deletion_success') %}
+            {{ service_remove }}
+        {% endfor %}
+    {% endif %}
+
     <section>
         <h1>Tous les services</h1>
 
         {% for service in all_services %}
 
-                <p>
-                    <img src="../../{{ service.servicePic }}" alt="{{ service.serviceName }}" width="200px">
-                </p>
+            <p>
+                <img src="../../{{ service.servicePic }}" alt="{{ service.serviceName }}" width="200px">
+            </p>
 
-                <p>
-                    {{ service.serviceName }}
-                </p>
+            <p>
+                {{ service.serviceName }}
+            </p>
 
+            <form action="{{ path('backstage_service_deletion', {'id' : service.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                <button>Retirer le service</button>
+            </form>
         {% endfor %}
 
     </section>
