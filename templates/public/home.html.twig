@@ -2,6 +2,11 @@
 
 {% block title %}All Surface - Accueil{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock %}
+
 {% block body %}
     {# message if a service has been issued #}
     {% if app.flashes('subscription_done') is defined %}
@@ -30,8 +35,12 @@
                     {{ service.serviceName }}
                 </p>
 
+                <h3>{{ service.descriptionTitle }}</h3>
+
+                <p>{{ service.description }}</p>
+
                 <p>
-                    <a href="{{ path('service', {'serviceName' : service.serviceName}) }}">Voir les details du service</a>
+                    <a href="{{ path('service', {'serviceName' : service.serviceName}) }}">Souscrire à ce service</a>
                 </p>
             {% endfor %}
         </div>

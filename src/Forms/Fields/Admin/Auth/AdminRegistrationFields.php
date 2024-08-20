@@ -8,7 +8,7 @@
     {
         #[Assert\NotBlank(message: 'Veuillez entrez un nom')]
         #[Assert\Regex(
-            pattern: '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@_.$])[a-zA-Z0-9@_.$]{6,20}$#',
+            pattern: '#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@_-.$])[a-zA-Z0-9@_-.$]{6,20}$#',
             message: 'Vous n\'avez pas accès à cette espace'
         )]
         //for validate regex put : upper, lower, number and special characters

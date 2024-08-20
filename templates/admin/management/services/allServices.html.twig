@@ -26,6 +26,13 @@
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
                 <button>Retirer le service</button>
             </form>
+
+            <p>
+                <button>
+                    <a href="{{ path('backstage_service_update', {'id' : service.id}) }}">Modifier le service</a>
+                </button>
+
+            </p>
         {% endfor %}
 
     </section>

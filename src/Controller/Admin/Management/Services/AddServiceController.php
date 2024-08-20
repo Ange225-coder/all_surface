@@ -54,6 +54,8 @@
                 }
 
                 $servicesEntity->setServiceName($serviceFields->getServiceName());
+                $servicesEntity->setDescriptionTitle($serviceFields->getDescriptionTitle());
+                $servicesEntity->setDescription($serviceFields->getDescription());
 
                 //adding service pic
                 $servicePic = $serviceFields->getServicePic();

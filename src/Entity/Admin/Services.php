@@ -17,12 +17,28 @@
         private string $service_name;
 
         #[ORM\Column(type: 'string')]
+        private string $description_title;
+
+        #[ORM\Column(type: 'text')]
+        private string $description;
+
+        #[ORM\Column(type: 'string')]
         private string $service_pic;
 
         //setters
         public function setId(int $id): void
         {
             $this->id = $id;
+        }
+
+        public function setDescriptionTitle(string $description_title): void
+        {
+            $this->description_title = $description_title;
+        }
+
+        public function setDescription(string $description): void
+        {
+            $this->description = $description;
         }
 
         public function setServiceName(string $service_name): void
@@ -45,6 +61,16 @@
         public function getServiceName(): string
         {
             return $this->service_name;
+        }
+
+        public function getDescription(): string
+        {
+            return $this->description;
+        }
+
+        public function getDescriptionTitle(): string
+        {
+            return $this->description_title;
         }
 
         public function getServicePic(): string

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le service {{ service.serviceName }}{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Modifier le service - {{ service.serviceName}} </h1>
+
+        {{ form('serviceUpdateForm') }}
+    </section>
+{% endblock %}

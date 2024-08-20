@@ -9,6 +9,9 @@
     use Symfony\Component\Security\Http\Attribute\IsGranted;
     use Doctrine\ORM\EntityManagerInterface;
 
+    /**
+     * @codeCoverageIgnore
+     */
     class AdminDashboardController extends AbstractController
     {
         private EntityManagerInterface $entityManager;

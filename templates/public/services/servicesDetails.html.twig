@@ -2,8 +2,8 @@
 
 {% block title %}All Surfaces - {{ service. serviceName }}{% endblock %}
 
-{% block javascripts %}
-    <script src="{{ asset('js/serviceSubscriptionForm.js') }}"></script>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/servicesDetails.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -14,18 +14,11 @@
             <img src="../{{ service.servicePic }}" alt="all_surface_{{ service.serviceName }}" width="200px">
         </p>
 
-        <p>
-             Ici, on décrira quels sont les spécificités du service dans les moindres details
-        </p>
-
-        <p>
-            <a href="#" id="toggleFormLink">Souscrire au service</a>
-        </p>
     </section>
 
-    <div style="" id="subscriptionForm">
+    <div>
         {{ form_start(subscriptionForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
-            <div class="grille">
+            <div>
                 <div>
                     {{ form_errors(subscriptionForm.full_name) }}
                     {{ form_widget(subscriptionForm.full_name) }}
@@ -62,33 +55,4 @@
             </div>
         {{ form_end(subscriptionForm) }}
     </div>
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% block stylesheets %}
-    <style>
-        .grille {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-    </style>
 {% endblock %}

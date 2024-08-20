@@ -1,0 +1,25 @@
+$breakpoints: (
+        tablet_max-width: 1024px,
+        phone_max-width: 480px,
+);
+
+//manager for screen tablets
+@mixin tablet {
+    @media screen and (max-width: map-get($breakpoints, tablet_max-width)) {
+        @content;
+    }
+}
+
+
+//manager for mobile tablets
+@mixin mobile {
+    @media screen and (max-width: map-get($breakpoints, phone_max-width)) {
+        @content;
+    }
+}
+
+
+
+* {
+    margin: 0;
+}

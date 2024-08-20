@@ -7,19 +7,64 @@
         <h1>Ajouter un service</h1>
 
         {{ form_start(servicesForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
-            <div>
-                {{ form_errors(servicesForm.serviceName) }}
-                {{ form_widget(servicesForm.serviceName) }}
+            <div class="gap">
+
+                <div>
+                    {{ form_label(servicesForm.serviceName) }}<br>
+                    {{ form_errors(servicesForm.serviceName) }}
+                    {{ form_widget(servicesForm.serviceName) }}
+                </div>
+
+                <div>
+                    {{ form_label(servicesForm.descriptionTitle) }}<br>
+                    {{ form_errors(servicesForm.descriptionTitle) }}
+                    {{ form_widget(servicesForm.descriptionTitle) }}
+                </div>
+
+                <div>
+                    {{ form_label(servicesForm.description) }}<br>
+                    {{ form_errors(servicesForm.description) }}
+                    {{ form_widget(servicesForm.description) }}
+                </div>
+
+                <div>
+                    {{ form_label(servicesForm.servicePic) }}<br>
+                    {{ form_errors(servicesForm.servicePic) }}
+                    {{ form_widget(servicesForm.servicePic) }}
+                </div>
+
+                <div>
+                    <button type="submit">Ajouter un service</button>
+                </div>
             </div>
 
-            <div>
-                {{ form_errors(servicesForm.servicePic) }}
-                {{ form_widget(servicesForm.servicePic) }}
-            </div>
-
-            <div>
-                <button type="submit">Ajouter un service</button>
-            </div>
         {{ form_end(servicesForm) }}
     </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        .gap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+    </style>
 {% endblock %}

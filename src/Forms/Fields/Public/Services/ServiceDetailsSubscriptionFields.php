@@ -22,6 +22,7 @@
         )]
         private string $email;
 
+        //Mettre aussi d'autres indicatifs
         #[Assert\Regex(
             pattern: '#^(?:0[157](?:[ -]?[0-9]{2}){4})$#',
             message: 'Entrez un numéro de téléphone ivoirien; Ex : 01 02 03 04 05'
